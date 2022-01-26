@@ -1,0 +1,130 @@
+.activated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: orange;
+}
+
+.activated_centers {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+/* THE SECTION OF THE activated LEFT */
+.activated_left {
+  width: 40%;
+  background: var(--secondary);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.activated_left img {
+  height: 400px;
+  z-index: 999999;
+}
+
+.activated_left p {
+  text-align: center;
+  color: var(--white);
+  font-family: cursive;
+}
+
+/* THE SECTION OF THE activated RIGHT */
+.activated_right {
+  width: 100%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.activated_right::-webkit-scrollbar {
+  display: none;
+}
+
+.activated_right_div {
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+}
+
+.logo_div {
+  margin-bottom: 20px;
+}
+
+.activated_center {
+  border: 1px solid var(--secondary);
+  max-width: 700px;
+  border-radius: 6px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.activated_image img {
+  width: 40%;
+  height: 40%;
+}
+
+.active_div {
+  line-height: 40px;
+}
+
+.active_div button {
+  cursor: pointer;
+}
+
+.active_div h2 {
+  color: var(--secondary);
+  font-size: 23px;
+}
+
+/* The section of the media query */
+@media screen and (max-width: 425px) {
+  .activated_center {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
+.activated_center button {
+  background: var(--primary);
+  color: var(--white);
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+}
+
+/* ========================================== */
+/* THE SECTION OF THE MEDIA QUERY */
+
+@media screen and (min-width: 701px) {
+  .activated_left {
+    display: flex;
+    width: 35%;
+  }
+
+  .activated_right {
+    width: 65%;
+  }
+
+  .activated_right_div {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .activated_left_div {
+    width: 70%;
+  }
+
+  .activated_right_div {
+    width: 60%;
+  }
+}
