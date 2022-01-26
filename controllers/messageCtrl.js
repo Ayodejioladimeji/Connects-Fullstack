@@ -55,6 +55,7 @@ const messageCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   getConversations: async (req, res) => {
     try {
       const features = new APIfeatures(
