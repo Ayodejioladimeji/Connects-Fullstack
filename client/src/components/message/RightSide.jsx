@@ -6,7 +6,7 @@ import { BiSend } from 'react-icons/bi';
 import { FaVideo, FaTrash, FaImage } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import { Swal } from 'sweetalert2';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 // IMPORTED COMPONENTS

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Info = ({ id, auth, profile, dispatch }) => {
   const [userData, setUserData] = useState([]);
-  const [onEdit, setOnEdit] = useState(false);
+  const [setOnEdit] = useState(false);
 
   useEffect(() => {
     if (id === auth.user._id) {
@@ -19,6 +19,7 @@ const Info = ({ id, auth, profile, dispatch }) => {
         <div className='info_container' key={user._id}>
           <img
             src={user.avatar}
+            alt='avatar'
             size='supper-avatar'
             style={{ width: '80px', height: '80px', borderRadius: '50%' }}
           />

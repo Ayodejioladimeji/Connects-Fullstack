@@ -6,11 +6,10 @@ import { useParams } from 'react-router-dom';
 
 // COMPONENTS
 import styles from './ViewProfile.module.css';
-import logo from '../../images/logo.png';
 import { FaArrowLeft } from 'react-icons/fa';
 import { PROFILE_TYPES } from './../../redux/actions/profileAction';
 
-const ViewProfile = ({}) => {
+const ViewProfile = () => {
   const { message } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [user, setUser] = useState([]);

@@ -19,7 +19,7 @@ const MsgDisplay = ({ user, msg, data }) => {
 
   useEffect(() => {
     showTime();
-  }, []);
+  }, [showTime]);
 
   const handleDeleteMessages = () => {
     if (!data) return;

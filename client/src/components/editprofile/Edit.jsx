@@ -29,7 +29,7 @@ const initialState = {
   website: '',
 };
 
-const EditProfile = ({}) => {
+const EditProfile = () => {
   const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [userData, setUserData] = useState(initialState);

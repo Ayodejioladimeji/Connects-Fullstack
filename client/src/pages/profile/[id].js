@@ -8,7 +8,6 @@ import { useParams } from 'react-router-dom';
 import { getProfileUsers } from '../../redux/actions/profileAction';
 import Info from './../../components/info/Info';
 import styles from '../message/index.module.css';
-import RightSide from './../../components/message/RightSide';
 import logo from '../../images/logo.png';
 
 const Profile = () => {
