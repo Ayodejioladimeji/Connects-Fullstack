@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import NotFound from '../components/not-found/NotFound';
+import NotFound from '../pages/NotFound';
 import { useSelector } from 'react-redux';
 
 const generatePage = (pageName) => {

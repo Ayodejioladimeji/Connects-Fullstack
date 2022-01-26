@@ -19,7 +19,7 @@ const ProfileCard = ({ children, user }) => {
         {' '}
         <FaArrowLeft
           className={styles.profile_arrow}
-          onClick={() => history.push('/message')}
+          onClick={() => history.push('/')}
         />
         <div
           className={styles.profile_link}

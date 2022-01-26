@@ -6,10 +6,11 @@ import Verification from './../pages/Verification';
 import ActivationEmail from './../components/activation/ActivationEmail';
 import Forgot from '../pages/Forgot';
 import Reset from './../pages/Reset';
-import PageRender from './../customRouter/PageRender';
 import PrivateRouter from './../customRouter/PrivateRouter';
 import Logout from './../pages/Logout';
-import Home from '../pages/message';
+import Home from '../pages/index';
+import Message from './../pages/Message';
+import NotFound from './../pages/NotFound';
 
 const Routes = () => {
   return (
@@ -22,15 +23,17 @@ const Routes = () => {
           exact
           component={ActivationEmail}
         />
+        <PrivateRouter exact path='/' component={Home} />
+        <PrivateRouter exact path='/message/:id' component={Message} />
         <Route path='/login' exact component={Login} />
         <Route path='/logout' exact component={Logout} />
         <Route path='/forgot_password' exact component={Forgot} />
         <Route path='/reset_password' exact component={Reset} />
 
-        <Route exact path='/' component={Home} />
+        <Route exact component={NotFound} />
 
-        <PrivateRouter exact path='/:page' component={PageRender} />
-        <PrivateRouter exact path='/:page/:id' component={PageRender} />
+        {/* <PrivateRouter exact path='/:page' component={PageRender} />
+        <PrivateRouter exact path='/:page/:id' component={PageRender} /> */}
       </Switch>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
-import LeftSide from '../../components/message/LeftSide';
+import LeftSide from '../components/message/LeftSide';
 import styles from './index.module.css';
 
-import logo from '../../images/logo.png';
+import logo from '../images/logo.png';
 
 const Message = () => {
   return (

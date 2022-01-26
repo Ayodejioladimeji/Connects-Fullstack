@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // COMPONENTS
-import { getProfileUsers } from '../../redux/actions/profileAction';
-import Info from './../../components/info/Info';
-import styles from '../message/index.module.css';
-import logo from '../../images/logo.png';
+import { getProfileUsers } from '../redux/actions/profileAction';
+import Info from '../components/info/Info';
+import styles from './index.module.css';
+import logo from '../images/logo.png';
 
 const Profile = () => {
   const { auth, profile } = useSelector((state) => state);
