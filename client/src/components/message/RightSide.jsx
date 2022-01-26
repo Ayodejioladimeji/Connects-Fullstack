@@ -184,7 +184,7 @@ const RightSide = () => {
       if (result.isConfirmed) {
         dispatch(deleteConversation({ auth, id }));
         Swal.fire('Deleted', 'Your Conversation has been deleted', 'success');
-        return history.push('/message');
+        return history.push('/');
       }
     });
   };
