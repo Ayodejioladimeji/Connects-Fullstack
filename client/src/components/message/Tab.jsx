@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+
+// COMPONENTS
 import styles from './Tab.module.css';
 import ChatList from './ChatList';
 import Online from './Online';
@@ -46,6 +48,8 @@ const Tab = () => {
             }
           >
             <ChatList />
+
+            <div className={styles.friends}>Search for friends</div>
           </div>
 
           <div

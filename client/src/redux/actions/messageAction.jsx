@@ -55,10 +55,13 @@ export const getConversations =
   ({ auth, page = 1 }) =>
   async (dispatch) => {
     try {
+      if (auth === undefined) return null;
       const res = await getDataAPI(
         `conversations?limit=${page * 9}`,
         auth.token
       );
+
+      console.log(res.data.conversations);
 
       let newArr = [];
       res.data.conversations.forEach((item) => {
@@ -79,10 +82,11 @@ export const getConversations =
         payload: { newArr, result: res.data.result },
       });
     } catch (err) {
-      dispatch({
-        type: GLOBALTYPES.ALERT,
-        payload: { error: err.response.data.msg },
-      });
+      console.log(err);
+      // dispatch({
+      //   type: GLOBALTYPES.ALERT,
+      //   payload: { error: err.response.data.msg },
+      // });
     }
   };
 
