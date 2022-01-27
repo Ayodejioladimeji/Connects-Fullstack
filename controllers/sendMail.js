@@ -42,39 +42,48 @@ const sendEmail = (to, username, url, txt) => {
     subject: 'Connects Chat App',
     html: `
     
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
     <div style="max-width: 700px; margin: 0 auto" background:#fff;>
-    <div style="text-align: center; padding: 12px">
-      <img
-        src="https://res.cloudinary.com/mamazee/image/upload/v1640929230/Connects/Group_1_uwle6s.png"
-        alt="logo"
-        height="120"
-        width="150"
-      />
-    </div>
-    <p
-      style="
-        text-align: center;
-        font-size: 14px;
-        text-transform: uppercase;
-        font-family: monospace;
-      "
-    >
-      YOU ARE ONE STEP AWAY
-    </p>
+      <div style="text-align: center; padding: 12px">
+        <img
+          src="https://res.cloudinary.com/mamazee/image/upload/v1640929230/Connects/Group_1_uwle6s.png"
+          alt="logo"
+          height="120"
+          width="150"
+        />
+      </div>
+      <p
+        style="
+          text-align: center;
+          font-size: 14px;
+          text-transform: uppercase;
+          font-family: monospace;
+        "
+      >
+        YOU ARE ONE STEP AWAY
+      </p>
 
-    <h1
-      style="
-        text-align: center;
-        font-size: 17px;
-        text-transform: uppercase;
-        font-family: monospace;
-      "
-    >
-      Verify Your Email Address
-    </h1>
+      <h1
+        style="
+          text-align: center;
+          font-size: 17px;
+          text-transform: uppercase;
+          font-family: monospace;
+        "
+      >
+        Verify Your Email Address
+      </h1>
 
-    <div style="padding: 10px 15px; line-height: 25px">
-        <p style="font-family: monospace; text-align: center font-size:12px">
+      <div style="padding: 10px 15px; line-height: 25px">
+        <p style="font-family: monospace; text-align: center; font-size: 12px">
           Hi Layobright, You are almost ready to start enjoying
           <b>Connects Chat App</b><br />
           Simply click the big blue button below to verify your email address.
@@ -101,12 +110,14 @@ const sendEmail = (to, username, url, txt) => {
 
         <hr />
         <p style="text-align: center; font-family: monospace">
-          If you did not enter this email address when signing up for Connects Chat App,
-          kindly disregard this message. Thanks!
+          If you did not enter this email address when signing up for Connects
+          Chat App, kindly disregard this message. Thanks!
         </p>
       </div>
+    </div>
+  </body>
+</html>
 
-      </div>
 
         `,
   };

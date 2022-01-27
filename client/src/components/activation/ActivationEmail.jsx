@@ -34,7 +34,7 @@ const ActivationEmail = () => {
         <div className={styles.active_div}>
           <h2>VERIFIED</h2>
           <p>{alert.success && 'success'}</p>
-          <button onClick={() => history.push('/')}>Start Chatting</button>
+          <button onClick={() => history.push('/login')}>Start Chatting</button>
         </div>
       </>
     );
@@ -51,7 +51,7 @@ const ActivationEmail = () => {
           <h2>UNVERIFIED</h2>
           <p>{alert.error && 'Session Expired'}</p>
           <button onClick={() => history.push('/register')}>
-            Kindly Re-register
+            Kindly Re-register or Login
           </button>
         </div>
       </>

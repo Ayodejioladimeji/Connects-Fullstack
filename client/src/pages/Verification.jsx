@@ -30,9 +30,6 @@ const Verification = () => {
                   Check your email and click on the confirmation button to
                   Activate your Account
                 </p>
-                <div className={styles.open}>
-                  <a href='https://www.gmail.com'>Open Mail</a>
-                </div>
               </div>
             </div>
           </div>

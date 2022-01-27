@@ -38,13 +38,10 @@ const authCtrl = {
       // console.log(activation_token)
 
       const url = `${CLIENT_URL}/api/activation/${activation_token}`;
-      //   console.log(url)
       sendMail(email, username, url, 'verify your email address');
-      // console.log(url)
 
       res.json({
         msg: 'Registration successful! Please check your email to activate your account',
-        activation_token,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
@@ -73,21 +70,10 @@ const authCtrl = {
         password,
       });
 
-      // Generating access token with refreshtoken
-      const access_token = createAccessToken({ id: newUser._id });
-      const refresh_token = createRefreshToken({ id: newUser._id });
-
-      res.cookie('refreshtoken', refresh_token, {
-        httpOnly: true,
-        path: '/api/refresh_token',
-        maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
-      });
-
       // Save information to database
       await newUser.save();
       res.json({
         msg: 'Account Activated',
-        access_token,
         user: {
           ...newUser._doc,
           password: '',
@@ -177,7 +163,7 @@ const authCtrl = {
 // Activation token
 const createActivationToken = (payload) => {
   return jwt.sign(payload, process.env.ACTIVATION_TOKEN_SECRET, {
-    expiresIn: '5m',
+    expiresIn: '10m',
   });
 };
 
