@@ -63,7 +63,13 @@ const authCtrl = {
       const check = await Users.findOne({ email });
       if (check) return res.status(400).json({ msg: 'User already exists' });
 
-      // Creating the new user objecct
+      const user_name = await Users.findOne({ username });
+      if (user_name)
+        return res
+          .status(400)
+          .json({ msg: 'Username taken, choose another one' });
+
+      // Creating the new user object
       const newUser = new Users({
         username,
         email,

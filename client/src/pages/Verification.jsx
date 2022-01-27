@@ -1,4 +1,8 @@
 import React from 'react';
+// PACKAGES
+import { Link } from 'react-router-dom';
+
+// COMPONENTS
 import styles from './verification.module.css';
 
 import verify from './verify.png';
@@ -30,6 +34,9 @@ const Verification = () => {
                   Check your email and click on the confirmation button to
                   Activate your Account
                 </p>
+                <div className={styles.open}>
+                  <Link to='/'>Go home</Link>
+                </div>
               </div>
             </div>
           </div>
