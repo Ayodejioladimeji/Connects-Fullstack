@@ -1,14 +1,13 @@
-.view_profile {
+.edit_profile {
   background: var(--primary);
-  height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 90;
+  z-index: 9999999990;
   text-align: center;
-  padding-top: 50px;
   padding: 0 10px;
+  height: 100vh;
 }
 
 .info_avatar {
@@ -81,13 +80,13 @@
   opacity: 0.4;
 }
 
-.view_profile button {
+.edit_profile button {
   color: var(--white);
   background: var(--transparent);
   margin-top: 15px;
 }
 
-.view_profile button:hover {
+.edit_profile button:hover {
   background: transparent;
   color: var(--white);
 }
@@ -100,10 +99,17 @@
   cursor: pointer;
 }
 
-.view_profile h3 {
+.edit_profile h3 {
   font-family: 'Gorditas', cursive;
   font-size: var(--small);
   color: var(--white);
   font-weight: bold;
   margin-top: 150px;
+}
+
+/* THE SECTION OF THE MEDIA QUERY */
+@media screen and (min-width: 767px) {
+  .edit_profile {
+    max-width: 300px;
+  }
 }

@@ -84,7 +84,7 @@ const sendEmail = (to, username, url, txt) => {
 
       <div style="padding: 10px 15px; line-height: 25px">
         <p style="font-family: monospace; text-align: center; font-size: 12px">
-          Hi Layobright, You are almost ready to start enjoying
+          Hi ${username}, You are almost ready to start enjoying
           <b>Connects Chat App</b><br />
           Simply click the big blue button below to verify your email address.
         </p>

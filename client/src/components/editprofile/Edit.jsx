@@ -67,7 +67,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className={styles.view_profile}>
+    <div className={styles.edit_profile}>
       <form onSubmit={handleSubmit}>
         <div className={styles.info_avatar}>
           <img

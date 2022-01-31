@@ -6,28 +6,37 @@
 
 .left_conversation {
   background: var(--white);
-  /* max-width: 250px; */
+  max-width: 300px;
   width: 100%;
   box-shadow: var(--shadoos);
   border-right: 1px solid var(--deep);
   position: relative;
+  overflow-y: auto;
 }
 
 .left_conversations {
   background: var(--white);
-  max-width: 250px;
+  max-width: 300px;
   width: 100%;
   box-shadow: var(--shadoos);
   border-right: 1px solid var(--deep);
   position: relative;
+  overflow-y: auto;
+}
+
+.left_conversation::-webkit-scrollbar,
+.left_conversations::-webkit-scrollbar {
+  display: none;
 }
 
 .right_conversation {
   width: 100%;
+  height: 100vh;
 }
 
 .conversate {
   width: 100%;
+  height: 100vh;
 }
 
 .conversate::-webkit-scrollbar {
@@ -50,6 +59,7 @@
 
 .right_center p {
   color: var(--non-active);
+  text-align: center;
 }
 
 /* ----------------------------------------- */

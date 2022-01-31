@@ -336,7 +336,7 @@ const RightSide = () => {
       <form className={styles.chat_input} onSubmit={handleSubmit}>
         <div className={styles.form_group}>
           <textarea
-            placeholder='Enter you message...'
+            placeholder='Enter your message...'
             value={text}
             onChange={(e) => setText(e.target.value)}
           />

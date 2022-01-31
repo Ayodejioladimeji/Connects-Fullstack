@@ -1,6 +1,9 @@
 .search_container {
   position: relative;
   background: var(--primary);
+  position: fixed;
+  width: 100%;
+  z-index: 9999999999;
 }
 
 .search {
@@ -99,4 +102,11 @@
   line-height: 35px;
   color: var(--primary);
   cursor: pointer;
+}
+
+/* THE SECTION OF THE MEDIA QUERY */
+@media screen and (min-width: 767px) {
+  .search_container {
+    max-width: 300px;
+  }
 }
