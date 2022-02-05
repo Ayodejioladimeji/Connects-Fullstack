@@ -63,10 +63,6 @@ const RightSide = () => {
   // AUTO SCROLL AND GETTING USER
   useEffect(() => {
     if (id && message.users.length > 0) {
-      setTimeout(() => {
-        refDisplay.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-      }, 50);
-
       const newUser = message.users.find((user) => user._id === id);
       if (newUser) setUser(newUser);
     }
@@ -134,7 +130,7 @@ const RightSide = () => {
   useEffect(() => {
     const getMessagesData = async () => {
       if (message.data.every((item) => item._id !== id)) {
-        await dispatch(getMessages({ auth, id }));
+        dispatch(getMessages({ auth, id }));
 
         setTimeout(() => {
           refDisplay.current.scrollIntoView({

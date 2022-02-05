@@ -150,7 +150,6 @@ export const deleteMessages =
 export const deleteConversation =
   ({ auth, id }) =>
   async (dispatch) => {
-    console.log(auth);
     dispatch({ type: MESS_TYPES.DELETE_CONVERSATION, payload: id });
     try {
       await deleteDataAPI(`conversation/${id}`, auth.token);
