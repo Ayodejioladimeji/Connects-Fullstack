@@ -1,46 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { FaCircle } from 'react-icons/fa';
 
 // COMPONENTS
-import {
-  MESS_TYPES,
-  getConversations,
-} from '../../redux/actions/messageAction';
+import { MESS_TYPES } from '../../redux/actions/messageAction';
 import UserCard from '../usercard/UserCard';
 import styles from './LeftSide.module.css';
 
 const Online = () => {
-  const { auth, message, online, suggestions } = useSelector((state) => state);
+  const { message, online, suggestions } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const history = useHistory();
   const { id } = useParams();
-  const pageEnd = useRef();
-  const [page, setPage] = useState(0);
-
-  // Load More
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setPage((p) => p + 1);
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    observer.observe(pageEnd.current);
-  }, [setPage]);
-
-  useEffect(() => {
-    if (message.resultUsers >= (page - 1) * 9 && page > 1) {
-      dispatch(getConversations({ auth, page }));
-    }
-  }, [message.resultUsers, page, auth, dispatch]);
 
   // Check User Online - Offline
   useEffect(() => {
@@ -70,12 +43,6 @@ const Online = () => {
 
   return (
     <div className={styles.chat_list}>
-      {/* {message.firstLoad && (
-      <p className={styles.none_user}>
-        Search for friends and start chatting
-      </p>
-    )} */}
-
       <>
         {suggestions.users.map((user) => {
           return (
@@ -91,10 +58,6 @@ const Online = () => {
           );
         })}
       </>
-
-      <button ref={pageEnd} style={{ opacity: 0 }}>
-        Load More
-      </button>
     </div>
   );
 };

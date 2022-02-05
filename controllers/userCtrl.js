@@ -62,11 +62,8 @@ const userCtrl = {
     try {
       const newArr = [req.user._id];
 
-      const num = req.query.num || 10;
-
       const users = await Users.aggregate([
         { $match: { _id: { $nin: newArr } } },
-        { $sample: { size: Number(num) } },
       ]).project('-password');
 
       return res.json({
