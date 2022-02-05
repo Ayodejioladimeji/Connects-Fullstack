@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { FaCircle } from 'react-icons/fa';
@@ -17,35 +17,15 @@ const ChatList = () => {
 
   const history = useHistory();
   const { id } = useParams();
-  const pageEnd = useRef();
-  const [page, setPage] = useState(0);
 
   useEffect(() => {
     if (message.firstLoad) return;
     dispatch(getConversations({ auth }));
   }, [dispatch, auth, message.firstLoad]);
 
-  // Load More
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setPage((p) => p + 1);
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    observer.observe(pageEnd.current);
-  }, [setPage]);
-
-  useEffect(() => {
-    if (message.resultUsers >= (page - 1) * 9 && page > 1) {
-      dispatch(getConversations({ auth, page }));
-    }
-  }, [message.resultUsers, page, auth, dispatch]);
+    dispatch(getConversations({ auth }));
+  }, [message.resultUsers, auth, dispatch]);
 
   // Check User Online - Offline
   useEffect(() => {
@@ -106,10 +86,6 @@ const ChatList = () => {
           })}
         </>
       )}
-
-      <button ref={pageEnd} style={{ opacity: 0 }}>
-        Load More
-      </button>
     </div>
   );
 };

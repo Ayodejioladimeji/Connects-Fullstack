@@ -52,14 +52,11 @@ export const addMessage =
   };
 
 export const getConversations =
-  ({ auth, page = 1 }) =>
+  ({ auth }) =>
   async (dispatch) => {
     try {
       if (auth.token === undefined) return;
-      const res = await getDataAPI(
-        `conversations?limit=${page * 9}`,
-        auth.token
-      );
+      const res = await getDataAPI('conversations', auth.token);
 
       let newArr = [];
       res.data.conversations.forEach((item) => {
@@ -92,6 +89,7 @@ export const getMessages =
   ({ auth, id, page = 1 }) =>
   async (dispatch) => {
     try {
+      if (auth.token === undefined) return;
       const res = await getDataAPI(
         `message/${id}?limit=${page * 9}`,
         auth.token
@@ -152,6 +150,7 @@ export const deleteMessages =
 export const deleteConversation =
   ({ auth, id }) =>
   async (dispatch) => {
+    console.log(auth);
     dispatch({ type: MESS_TYPES.DELETE_CONVERSATION, payload: id });
     try {
       await deleteDataAPI(`conversation/${id}`, auth.token);

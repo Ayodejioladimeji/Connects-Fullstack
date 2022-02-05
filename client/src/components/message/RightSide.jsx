@@ -60,6 +60,7 @@ const RightSide = () => {
     }
   }, [message.data, id]);
 
+  // AUTO SCROLL AND GETTING USER
   useEffect(() => {
     if (id && message.users.length > 0) {
       setTimeout(() => {
@@ -76,6 +77,7 @@ const RightSide = () => {
     document.addEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // CHANGING MEDIA SECTION
   const handleChangeMedia = (e) => {
     const files = [...e.target.files];
     let err = '';
@@ -95,12 +97,14 @@ const RightSide = () => {
     setMedia([...media, ...newMedia]);
   };
 
+  // DELETING MEDIA SECTION
   const handleDeleteMedia = (index) => {
     const newArr = [...media];
     newArr.splice(index, 1);
     setMedia(newArr);
   };
 
+  // HANDLE SUBMIT SECTION
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!text.trim() && media.length === 0) return;
@@ -173,8 +177,7 @@ const RightSide = () => {
   // Delete Conversation
   const handleDeleteConversation = () => {
     Swal.fire({
-      title: '<span>Do you want to clear your conversations?</span>',
-      text: 'This action is not reversible',
+      html: ' <h4>Do you want to clear your conversations?</h4> <br /> This action is not reversible',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -295,7 +298,7 @@ const RightSide = () => {
         <div className={styles.chat_display} ref={refDisplay}>
           <button ref={pageEnd}>Load more</button>
 
-          {data.map((msg, index) => (
+          {data?.map((msg, index) => (
             <div key={index}>
               {msg.sender !== auth.user._id && (
                 <div className={`${styles.chat_row} ${styles.other_message}`}>
@@ -319,11 +322,12 @@ const RightSide = () => {
         </div>
       </div>
 
+      {/* THE SHOW MEDIA SECTION */}
       <div
         className={styles.show_media}
         style={{ display: media.length > 0 ? 'grid' : 'none' }}
       >
-        {media.map((item, index) => (
+        {media?.map((item, index) => (
           <div key={index} className={styles.file_media}>
             {item.type.match(/video/i)
               ? videoShow(URL.createObjectURL(item))
@@ -333,6 +337,7 @@ const RightSide = () => {
         ))}
       </div>
 
+      {/* THE SUBMIT SECTION */}
       <form className={styles.chat_input} onSubmit={handleSubmit}>
         <div className={styles.form_group}>
           <textarea
@@ -340,12 +345,6 @@ const RightSide = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          {/* <input
-            type='text'
-            placeholder='Enter you message...'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          /> */}
         </div>
 
         <div className={styles.form_input}>

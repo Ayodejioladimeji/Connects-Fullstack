@@ -63,7 +63,7 @@ const messageCtrl = {
           recipients: req.user._id,
         }),
         req.query
-      ).paginating();
+      );
 
       const conversations = await features.query
         .sort('-updatedAt')
