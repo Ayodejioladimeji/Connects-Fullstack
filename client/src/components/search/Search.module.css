@@ -108,6 +108,7 @@
 .bell {
   position: relative;
   margin-top: -3px;
+  cursor: pointer;
 }
 
 .bell span {

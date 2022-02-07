@@ -9,6 +9,7 @@ const Message = () => {
     <div className={styles.conversation}>
       <div className={styles.left_conversation}>
         <LeftSide />
+        <div className={styles.friends}>Search for friends</div>
       </div>
 
       <div className={styles.right_conversation}>

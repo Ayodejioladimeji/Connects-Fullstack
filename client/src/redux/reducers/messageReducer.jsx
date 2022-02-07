@@ -8,12 +8,19 @@ const initialState = {
   firstLoad: false,
   show: false,
   searchUser: [],
+  showModal: false,
 };
 
 const messageReducer = (state = initialState, action) => {
   switch (action.type) {
     case MESS_TYPES.SHOW_SEARCH:
       return { ...state, show: true };
+
+    case MESS_TYPES.SHOW_MODAL:
+      return { ...state, showModal: true };
+
+    case MESS_TYPES.REMOVE_MODAL:
+      return { ...state, showModal: false };
 
     case MESS_TYPES.REMOVE_SEARCH:
       return { ...state, show: false };

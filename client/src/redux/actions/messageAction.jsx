@@ -5,6 +5,8 @@ import { createNotify } from './notifyAction';
 export const MESS_TYPES = {
   SHOW_SEARCH: 'SHOW_SEARCH',
   REMOVE_SEARCH: 'REMOVE_SEARCH',
+  SHOW_MODAL: 'SHOW_MODAL',
+  REMOVE_MODAL: 'REMOVE_MODAL',
   SEARCH_USER: 'SEARCH_USER',
   ADD_USER: 'ADD_USER',
   ADD_MESSAGE: 'ADD_MESSAGE',
@@ -18,6 +20,14 @@ export const MESS_TYPES = {
 
 export const showSearch = () => (dispatch) => {
   dispatch({ type: MESS_TYPES.SHOW_SEARCH });
+};
+
+export const showModal = () => (dispatch) => {
+  dispatch({ type: MESS_TYPES.SHOW_MODAL });
+};
+
+export const removeModal = () => (dispatch) => {
+  dispatch({ type: MESS_TYPES.REMOVE_MODAL });
 };
 
 export const removeSearch = () => (dispatch) => {

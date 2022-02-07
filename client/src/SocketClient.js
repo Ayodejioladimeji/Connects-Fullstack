@@ -39,7 +39,7 @@ const SocketClient = () => {
         msgs.user.username + ' ' + msgs.text,
         msgs.user.avatar,
         msgs.url,
-        'V-NETWORK'
+        'CONNECTS-CHAT-APP'
       );
     });
 

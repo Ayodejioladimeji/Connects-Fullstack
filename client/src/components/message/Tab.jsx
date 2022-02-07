@@ -48,8 +48,6 @@ const Tab = () => {
             }
           >
             <ChatList />
-
-            <div className={styles.friends}>Search for friends</div>
           </div>
 
           <div

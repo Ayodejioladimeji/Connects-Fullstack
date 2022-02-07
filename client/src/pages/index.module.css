@@ -62,6 +62,14 @@
   text-align: center;
 }
 
+.friends {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--deep);
+}
+
 /* ----------------------------------------- */
 /* THE SECTION OF THE RESPONSIVENESS */
 @media screen and (min-width: 900px) {

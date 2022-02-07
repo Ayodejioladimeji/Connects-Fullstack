@@ -33,7 +33,7 @@ const Profile = () => {
           <h4>Connects Chat App</h4>
           <p>
             Connect is a social messenger connecting people together without
-            stress
+            stressing
           </p>
         </div>
       </div>
