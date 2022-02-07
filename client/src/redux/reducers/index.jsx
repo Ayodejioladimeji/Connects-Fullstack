@@ -8,6 +8,7 @@ import peer from './peerReducer';
 import call from './callReducer';
 import suggestions from './suggestionsReducer';
 import profile from './profileReducer';
+import notify from './notifyReducer';
 
 export default combineReducers({
   auth,
@@ -15,7 +16,7 @@ export default combineReducers({
   message,
   profile,
   socket,
-  // notify,
+  notify,
   online,
   suggestions,
   call,

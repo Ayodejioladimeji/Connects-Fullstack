@@ -63,6 +63,10 @@ const RightSide = () => {
   // AUTO SCROLL AND GETTING USER
   useEffect(() => {
     if (id && message.users.length > 0) {
+      setTimeout(() => {
+        refDisplay.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 50);
+
       const newUser = message.users.find((user) => user._id === id);
       if (newUser) setUser(newUser);
     }
@@ -120,7 +124,7 @@ const RightSide = () => {
     };
 
     setLoadMedia(false);
-    await dispatch(addMessage({ msg, auth, socket }));
+    dispatch(addMessage({ msg, auth, socket }));
     if (refDisplay.current) {
       refDisplay.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
@@ -130,7 +134,7 @@ const RightSide = () => {
   useEffect(() => {
     const getMessagesData = async () => {
       if (message.data.every((item) => item._id !== id)) {
-        dispatch(getMessages({ auth, id }));
+        await dispatch(getMessages({ auth, id }));
 
         setTimeout(() => {
           refDisplay.current.scrollIntoView({
@@ -187,23 +191,6 @@ const RightSide = () => {
       }
     });
   };
-
-  // const Toast = Swal.mixin({
-  //   toast: true,
-  //   position: 'top-end',
-  //   showConfirmButton: false,
-  //   timer: 3000,
-  //   timerProgressBar: true,
-  //   didOpen: (toast) => {
-  //     toast.addEventListener('mouseenter', Swal.stopTimer)
-  //     toast.addEventListener('mouseleave', Swal.resumeTimer)
-  //   }
-  // })
-
-  // Toast.fire({
-  //   icon: 'success',
-  //   title: 'Signed in successfully'
-  // })
 
   // Call
   const caller = ({ video }) => {
@@ -294,7 +281,7 @@ const RightSide = () => {
         <div className={styles.chat_display} ref={refDisplay}>
           <button ref={pageEnd}>Load more</button>
 
-          {data?.map((msg, index) => (
+          {data.map((msg, index) => (
             <div key={index}>
               {msg.sender !== auth.user._id && (
                 <div className={`${styles.chat_row} ${styles.other_message}`}>

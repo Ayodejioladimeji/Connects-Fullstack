@@ -1,5 +1,6 @@
 import { GLOBALTYPES, DeleteData } from './globalTypes';
 import { postDataAPIS, getDataAPI, deleteDataAPI } from '../../utils/fetchData';
+import { createNotify } from './notifyAction';
 
 export const MESS_TYPES = {
   SHOW_SEARCH: 'SHOW_SEARCH',
@@ -43,6 +44,17 @@ export const addMessage =
 
     try {
       await postDataAPIS('message', msg, auth.token);
+
+      // Notify
+      const msgs = {
+        id: auth.user._id,
+        text: 'Sends you a message.',
+        recipients: [msg.recipient],
+        url: `/message/${_id}`,
+        content: msg.text,
+      };
+
+      dispatch(createNotify({ msgs, auth, socket }));
     } catch (err) {
       dispatch({
         type: GLOBALTYPES.ALERT,

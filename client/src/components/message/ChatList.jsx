@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { FaCircle } from 'react-icons/fa';
 
 // COMPONENTS
 import {
@@ -10,9 +9,10 @@ import {
 } from '../../redux/actions/messageAction';
 import UserCard from '../usercard/UserCard';
 import styles from './LeftSide.module.css';
+import { FaCircle } from 'react-icons/fa';
 
 const ChatList = () => {
-  const { auth, message, online } = useSelector((state) => state);
+  const { auth, message, online, notify } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const history = useHistory();

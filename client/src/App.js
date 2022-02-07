@@ -15,6 +15,7 @@ import Alert from './components/alert/Alert';
 import { getSuggestions } from './redux/actions/suggestionsAction';
 import SocketClient from './SocketClient';
 import CallModal from './components/message/CallModal';
+import { getNotifies } from './redux/actions/notifyAction';
 
 function App() {
   const { auth, call } = useSelector((state) => state);
@@ -32,7 +33,7 @@ function App() {
   useEffect(() => {
     if (auth.token) {
       dispatch(getSuggestions(auth.token));
-      // dispatch(getNotifies(auth.token))
+      dispatch(getNotifies(auth.token));
     }
   }, [dispatch, auth.token]);
 

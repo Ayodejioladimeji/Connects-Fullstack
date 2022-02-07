@@ -33,9 +33,10 @@ const SocketServer = (socket) => {
   });
 
   // Notification
-  socket.on('createNotify', (msg) => {
-    const client = users.find((user) => msg.recipients.includes(user.id));
-    client && socket.to(`${client.socketId}`).emit('createNotifyToClient', msg);
+  socket.on('createNotify', (msgs) => {
+    const client = users.find((user) => msgs.recipients.includes(user.id));
+    client &&
+      socket.to(`${client.socketId}`).emit('createNotifyToClient', msgs);
   });
 
   socket.on('removeNotify', (msg) => {
@@ -51,8 +52,6 @@ const SocketServer = (socket) => {
 
   // Check User Online / Offline
   socket.on('checkUserOnline', (data) => {
-    // console.log(data);
-    // console.log(users);
     const following = users.filter((user) => {
       return user.id;
     });

@@ -3,7 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 // PACKAGES
 import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch, FaArrowLeft } from 'react-icons/fa';
+import { FiBell } from 'react-icons/fi';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 // COMPONENTS
 import { MESS_TYPES, showSearch } from '../../redux/actions/messageAction';
@@ -15,7 +17,7 @@ import { PROFILE_TYPES } from './../../redux/actions/profileAction';
 import styles from './Search.module.css';
 
 const Search = () => {
-  const { auth, message } = useSelector((state) => state);
+  const { auth, message, notify } = useSelector((state) => state);
   const dispatch = useDispatch();
   const clickRef = useRef();
   const [search, setSearch] = useState('');
@@ -56,10 +58,19 @@ const Search = () => {
     <div className={styles.search_container}>
       <div className={styles.search} ref={clickRef}>
         <div className={styles.search_left}>
-          <h3>connects</h3>
+          <Link to='/'>
+            <h3>connects</h3>
+          </Link>
         </div>
 
         <div className={styles.search_right}>
+          <div className={styles.bell}>
+            <FiBell
+              onClick={() => setDrop(!drop)}
+              className={styles.search_icon}
+            />
+            {notify.data.length > 0 && <span>{notify.data.length}</span>}
+          </div>
           <FaSearch
             onClick={() => dispatch(showSearch())}
             className={styles.search_icon}

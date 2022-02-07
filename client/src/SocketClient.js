@@ -4,9 +4,23 @@ import { GLOBALTYPES } from './redux/actions/globalTypes';
 import { MESS_TYPES } from './redux/actions/messageAction';
 
 import audiobell from './audio/got-it-done-613.mp3';
+import { NOTIFY_TYPES } from './redux/actions/notifyAction';
+
+const spawnNotification = (body, icon, url, title) => {
+  let options = {
+    body,
+    icon,
+  };
+  let n = new Notification(title, options);
+
+  n.onclick = (e) => {
+    e.preventDefault();
+    window.open(url, '_blank');
+  };
+};
 
 const SocketClient = () => {
-  const { auth, socket, online, call } = useSelector((state) => state);
+  const { auth, notify, socket, online, call } = useSelector((state) => state);
   const dispatch = useDispatch();
   const audioRef = useRef();
 
@@ -14,6 +28,32 @@ const SocketClient = () => {
   useEffect(() => {
     socket.emit('joinUser', auth.user);
   }, [socket, auth.user]);
+
+  // Add Notification
+  useEffect(() => {
+    socket.on('createNotifyToClient', (msgs) => {
+      dispatch({ type: NOTIFY_TYPES.CREATE_NOTIFY, payload: msgs });
+
+      if (notify.sound) audioRef.current.play();
+      spawnNotification(
+        msgs.user.username + ' ' + msgs.text,
+        msgs.user.avatar,
+        msgs.url,
+        'V-NETWORK'
+      );
+    });
+
+    return () => socket.off('createNotifyToClient');
+  }, [socket, dispatch, notify.sound]);
+
+  // Remove Notification
+  useEffect(() => {
+    socket.on('removeNotifyToClient', (msg) => {
+      dispatch({ type: NOTIFY_TYPES.REMOVE_NOTIFY, payload: msg });
+    });
+
+    return () => socket.off('removeNotifyToClient');
+  }, [socket, dispatch]);
 
   // Message
   useEffect(() => {
@@ -50,6 +90,7 @@ const SocketClient = () => {
     return () => socket.off('checkUserOnlineToMe');
   }, [socket, dispatch, online]);
 
+  // Checck User Online To client
   useEffect(() => {
     socket.on('checkUserOnlineToClient', (id) => {
       if (!online.includes(id)) {
@@ -78,6 +119,7 @@ const SocketClient = () => {
     return () => socket.off('callUserToClient');
   }, [socket, dispatch]);
 
+  // Check if user is busy on another call
   useEffect(() => {
     socket.on('userBusy', (data) => {
       dispatch({

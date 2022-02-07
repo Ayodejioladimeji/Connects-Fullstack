@@ -25,6 +25,26 @@
 }
 
 .fa_circle {
-  color: green;
-  font-size: 8px;
+  color: var(--primary);
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.offline {
+  color: red;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.notify {
+  background: red;
+  height: 15px;
+  width: 15px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 10px;
+  margin-right: 10px;
 }

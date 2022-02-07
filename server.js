@@ -7,6 +7,7 @@ const SocketServer = require('./socketServer');
 const { ExpressPeerServer } = require('peer');
 const path = require('path');
 
+// middlewares
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -27,6 +28,7 @@ ExpressPeerServer(http, { path: '/' });
 app.use('/api', require('./routes/authRouter'));
 app.use('/api', require('./routes/userRouter'));
 app.use('/api', require('./routes/messageRouter'));
+app.use('/api', require('./routes/notifyRouter'));
 
 const URI = process.env.MONGODB_URL;
 mongoose.connect(
