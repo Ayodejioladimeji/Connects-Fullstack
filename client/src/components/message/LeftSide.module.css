@@ -69,6 +69,12 @@
 }
 
 /* The section of the bell down */
+.ring_link {
+  border-bottom: 1px solid var(--deep);
+  width: 100%;
+  padding-bottom: 15px;
+}
+
 .ring_down {
   display: flex;
   justify-content: space-between;
@@ -79,9 +85,6 @@
   padding-top: 15px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--light);
-  padding-bottom: 15px;
-  width: 100%;
 }
 
 .ring_bottom small {
@@ -94,10 +97,15 @@
   color: var(--primary);
 }
 
+.ring_bottom .ring_contents {
+  font-size: 9px;
+  color: var(--non-active);
+}
+
 .ring_bottom img {
   border: 2px solid var(--primary);
-  height: 40px;
-  width: 40px;
+  height: 45px;
+  width: 45px;
   object-fit: cover;
 }
 
@@ -115,4 +123,19 @@
 .read {
   font-size: 7px;
   margin-right: 5px;
+}
+
+.ring_button {
+  text-align: center;
+}
+
+.ring button {
+  background: var(--primary);
+  color: var(--white);
+  margin-top: 30px;
+  font-size: var(--font-smalling);
+}
+
+.ring button:hover {
+  color: var(--white);
 }

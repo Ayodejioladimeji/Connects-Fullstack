@@ -1,6 +1,6 @@
 .reactions {
   display: grid;
-  grid-template-columns: repeat(4, 50px);
+  grid-template-columns: repeat(6, 50px);
   text-align: center;
   cursor: pointer;
   position: absolute;

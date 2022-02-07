@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 // COMPONENTS
 import { MESS_TYPES, showSearch } from '../../redux/actions/messageAction';
 import { getDataAPI } from './../../utils/fetchData';
-import { removeSearch, showModal } from './../../redux/actions/messageAction';
+import { removeSearch, notifyModal } from './../../redux/actions/messageAction';
 import { GLOBALTYPES } from './../../redux/actions/globalTypes';
 import { logout } from './../../redux/actions/authAction';
 import { PROFILE_TYPES } from './../../redux/actions/profileAction';
@@ -64,10 +64,16 @@ const Search = () => {
         </div>
 
         <div className={styles.search_right}>
-          <div className={styles.bell} onClick={() => dispatch(showModal())}>
-            <FiBell className={styles.search_icon} />
-            {notify.data.length > 0 && <span>{notify.data.length}</span>}
-          </div>
+          {notify.data.length > 0 && (
+            <div
+              className={styles.bell}
+              onClick={() => dispatch(notifyModal())}
+            >
+              <FiBell className={styles.search_icon} />
+              <span>{notify.data.length}</span>
+            </div>
+          )}
+
           <FaSearch
             onClick={() => dispatch(showSearch(true))}
             className={styles.search_icon}
