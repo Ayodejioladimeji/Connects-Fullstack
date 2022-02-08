@@ -13,12 +13,12 @@
 .call_box {
   width: 100%;
   max-width: 400px;
-  background: var(--primary);
+  background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: var(--white);
+  color: var(--primary);
   padding: 50px 0;
   border-radius: 5px;
   box-shadow: var(--shadoos);
@@ -111,5 +111,5 @@
   bottom: 190px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--white);
+  color: var(--primary);
 }
