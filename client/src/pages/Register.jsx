@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // PACKAGES
+import { GoogleLogin } from 'react-google-login';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
@@ -15,7 +16,7 @@ import left from '../images/lefti.png';
 import Loading from '../components/alert/Loading';
 
 // Bringing register from redux actions
-import { register } from '../redux/actions/authAction';
+import { register, responseGoogle } from '../redux/actions/authAction';
 
 const passwordUpper = /(?=.*[A-Z])/;
 const passwordSpecial = /(?=.*[!@#$%^&*])/;
@@ -102,10 +103,20 @@ const Register = () => {
                   <div className={styles.register_right_top}>
                     <img src={logo} alt='logo' />
                     <h3>Register Account</h3>
-                    <p>Get free Connects account now</p>
+                    {/* <p>Get free Connects account now</p> */}
                   </div>
 
                   <div className={styles.register_right_bottom}>
+                    <div className={styles.social_box}>
+                      <GoogleLogin
+                        clientId='676440649536-83g9poh72p3a3n7oj0inb3bg1450d2id.apps.googleusercontent.com'
+                        buttonText='Google Signup'
+                        className={styles.social_one}
+                        onSuccess={() => dispatch(responseGoogle())}
+                        cookiePolicy={'single_host_origin'}
+                      />
+                    </div>
+
                     <form onSubmit={handleSubmit}>
                       <div className={styles.form_group}>
                         <label htmlFor='email'>Email Address</label>

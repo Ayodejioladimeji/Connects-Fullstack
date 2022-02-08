@@ -1,6 +1,6 @@
 import { GLOBALTYPES } from './globalTypes';
 import { postDataAPI } from '../../utils/fetchData';
-import { postDataAPIS } from '../../utils/fetchData';
+import { postDataAPIS, postGoogleAPI } from '../../utils/fetchData';
 
 // REGISTRATION
 export const register = (data) => async (dispatch) => {
@@ -160,5 +160,54 @@ export const logout = () => async (dispatch) => {
         error: err.response.data.msg,
       },
     });
+  }
+};
+
+// GOOGLE LOGIN
+export const responseGoogle = (response) => async (dispatch) => {
+  try {
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+
+    console.log(response);
+
+    const res = await postGoogleAPI('google_login', response);
+
+    dispatch({
+      type: GLOBALTYPES.AUTH,
+      payload: res.data.msg,
+      // payload: {
+      //   // token: res.data.access_token,
+      //   user: res.data.msg,
+      // },
+    });
+
+    localStorage.setItem('firstLogin', true);
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        success: res.data.msg,
+      },
+    });
+    setTimeout(() => {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {},
+      });
+    }, 6000);
+  } catch (err) {
+    console.log(err);
+    // dispatch({
+    //   type: GLOBALTYPES.ALERT,
+    //   payload: {
+    //     error: err.response.data.msg,
+    //   },
+    // });
+
+    setTimeout(() => {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {},
+      });
+    }, 6000);
   }
 };

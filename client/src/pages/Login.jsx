@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 // PACKAGES
+import { GoogleLogin } from 'react-google-login';
+
 import { Formik } from 'formik';
 import * as EmailValidator from 'email-validator';
 import { Link } from 'react-router-dom';
@@ -13,7 +15,7 @@ import styles from './Register.module.css';
 import logo from '../images/logo.png';
 import left from '../images/lefti.png';
 import Loading from '../components/alert/Loading';
-import { login } from '../redux/actions/authAction';
+import { login, responseGoogle } from '../redux/actions/authAction';
 
 const passwordUpper = /(?=.*[A-Z])/;
 const passwordSpecial = /(?=.*[!@#$%^&*])/;
@@ -99,6 +101,16 @@ const Register = () => {
                   </div>
 
                   <div className={styles.register_right_bottom}>
+                    <div className={styles.social_box}>
+                      <GoogleLogin
+                        clientId='676440649536-83g9poh72p3a3n7oj0inb3bg1450d2id.apps.googleusercontent.com'
+                        buttonText='Google Signup'
+                        className={styles.social_one}
+                        onSuccess={dispatch(responseGoogle())}
+                        cookiePolicy={'single_host_origin'}
+                      />
+                    </div>
+
                     <form onSubmit={handleSubmit}>
                       <div className={styles.form_group}>
                         <label htmlFor='email'>Email Address</label>
