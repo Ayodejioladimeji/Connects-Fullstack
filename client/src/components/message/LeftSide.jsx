@@ -66,8 +66,8 @@ const LeftSide = () => {
             )}
           </div>
 
-          {notify.data.map((item) => (
-            <Link to={item.url} onClick={() => handleIsRead(item)}>
+          {notify.data.map((item, index) => (
+            <Link key={index} to={item.url} onClick={() => handleIsRead(item)}>
               <div className={styles.ring_link}>
                 <div className={styles.ring_down}>
                   <div className={styles.ring_bottom}>

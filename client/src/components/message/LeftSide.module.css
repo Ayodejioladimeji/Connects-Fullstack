@@ -113,6 +113,7 @@
   height: 45px;
   width: 45px;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .ring_bottom span {

@@ -105,6 +105,7 @@ const messageReducer = (state = initialState, action) => {
             : { ...user, online: false };
         }),
       };
+
     default:
       return state;
   }
