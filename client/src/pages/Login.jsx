@@ -112,7 +112,7 @@ const Register = () => {
                     <div className={styles.social_box}>
                       <GoogleLogin
                         clientId='676440649536-83g9poh72p3a3n7oj0inb3bg1450d2id.apps.googleusercontent.com'
-                        buttonText='Google Signup'
+                        buttonText='Google Login'
                         className={styles.social_one}
                         onSuccess={onSuccess}
                         cookiePolicy={'single_host_origin'}

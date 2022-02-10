@@ -54,31 +54,31 @@ const Register = () => {
 
         // EMAIL SECTION
         if (!values.email) {
-          errors.email = 'Email is Required';
+          errors.email = 'Email is required';
         } else if (!EmailValidator.validate(values.email)) {
           errors.email = 'Invalid email address';
         }
 
         // USERNAME SECTION
         if (!values.username) {
-          errors.username = 'Username is Required';
+          errors.username = 'Username is required';
         } else if (values.username.length <= 3) {
           errors.username = 'Username should be more than 3 characters';
         }
 
         //   THE PASSWORD SECTION
         if (!values.password) {
-          errors.password = 'Password is Required';
+          errors.password = 'Password is required';
         } else if (values.password.length < 8) {
           errors.password = 'Password must be 8 characters long.';
         } else if (!passwordUpper.test(values.password)) {
-          errors.password = 'Password must contain one UpperCase letter';
+          errors.password = 'Password must contain one upperCase letter';
         } else if (!passwordLower.test(values.password)) {
-          errors.password = 'Password must contain one LowerCase letter';
+          errors.password = 'Password must contain one lowerCase letter';
         } else if (!passwordRegex.test(values.password)) {
-          errors.password = 'password Must contain one number';
+          errors.password = 'Password must contain one number';
         } else if (!passwordSpecial.test(values.password)) {
-          errors.password = 'password Must contain one special character';
+          errors.password = 'Password must contain one special character';
         }
 
         return errors;
