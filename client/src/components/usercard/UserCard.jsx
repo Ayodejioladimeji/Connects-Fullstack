@@ -13,32 +13,36 @@ const UserCard = ({ children, user, handleClose, msg }) => {
     const { text } = user;
     return (
       <>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: text.substring(0, 20).trim(),
-          }}
-        ></div>
-
-        {user.call ? (
-          <div>
-            {user.call.times === 0 ? (
-              user.call.video ? (
-                <FaVideoSlash />
-              ) : (
-                <FcMissedCall />
-              )
-            ) : user.call.video ? (
-              <FaVideo />
-            ) : (
-              <FiPhoneCall />
-            )}
-          </div>
+        {text ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: text.substring(0, 20).trim(),
+            }}
+          ></div>
         ) : (
-          user.media.length > 0 && (
-            <div>
-              {user.media.length} <FaImage />
-            </div>
-          )
+          <>
+            {user.call ? (
+              <div>
+                {user.call.times === 0 ? (
+                  user.call.video ? (
+                    <FaVideoSlash />
+                  ) : (
+                    <FcMissedCall />
+                  )
+                ) : user.call.video ? (
+                  <FaVideo />
+                ) : (
+                  <FiPhoneCall />
+                )}
+              </div>
+            ) : (
+              user.media.length > 0 && (
+                <div>
+                  {user.media.length} <FaImage />
+                </div>
+              )
+            )}
+          </>
         )}
       </>
     );

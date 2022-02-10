@@ -8,6 +8,7 @@
   padding: 3px 5px;
   overflow: hidden;
   background: var(--white);
+  z-index: 9;
 }
 
 .user_card .user_link {

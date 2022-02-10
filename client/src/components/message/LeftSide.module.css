@@ -37,11 +37,16 @@
   background: var(--white);
   top: 0;
   width: 100%;
-  max-width: 300px;
   height: 100vh;
   padding: 10px;
   z-index: 999999999999;
   overflow: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .ring {
+    max-width: 300px;
+  }
 }
 
 .ring::-webkit-scrollbar {
