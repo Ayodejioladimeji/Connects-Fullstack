@@ -4,6 +4,10 @@ const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 const passwordMail = require('./passwordMail');
 
+const { google } = require('googleapis');
+const { OAuth2 } = google.auth;
+const client = new OAuth2(process.env.MAILING_SERVICE_CLIENT_ID);
+
 const { CLIENT_URL } = process.env;
 
 const userCtrl = {
@@ -195,16 +199,17 @@ const userCtrl = {
           return res.status(400).json({ msg: 'Password is incorrect.' });
 
         const refresh_token = createRefreshToken({ id: user._id });
+
         res.cookie('refreshtoken', refresh_token, {
           httpOnly: true,
-          path: '/user/refresh_token',
+          path: '/api/refresh_token',
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
         res.json({ msg: 'Login success!' });
       } else {
         const newUser = new Users({
-          name,
+          username: name,
           email,
           password: passwordHash,
           avatar: picture,
@@ -213,9 +218,10 @@ const userCtrl = {
         await newUser.save();
 
         const refresh_token = createRefreshToken({ id: newUser._id });
+
         res.cookie('refreshtoken', refresh_token, {
           httpOnly: true,
-          path: '/user/refresh_token',
+          path: '/api/refresh_token',
           maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
@@ -289,6 +295,12 @@ const userCtrl = {
 const createAccessToken = (payload) => {
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '1d',
+  });
+};
+
+const createRefreshToken = (payload) => {
+  return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: '30d',
   });
 };
 

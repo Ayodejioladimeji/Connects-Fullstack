@@ -55,9 +55,9 @@ export const deleteDataAPI = async (url, token) => {
 };
 
 // THE POST DATA API WITH TOKEN
-export const postGoogleAPI = async (url, response) => {
+export const postGoogleAPI = async (url, tokenId) => {
   const res = await axios.post(`/api/${url}`, {
-    tokenId: response.tokenId,
+    tokenId: tokenId,
   });
   return res;
 };

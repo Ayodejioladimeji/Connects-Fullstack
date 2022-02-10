@@ -164,21 +164,17 @@ export const logout = () => async (dispatch) => {
 };
 
 // GOOGLE LOGIN
-export const responseGoogle = (response) => async (dispatch) => {
+export const responseGoogle = (tokenId) => async (dispatch) => {
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
-    console.log(response);
-
-    const res = await postGoogleAPI('google_login', response);
+    const res = await postGoogleAPI('google_login', tokenId);
 
     dispatch({
       type: GLOBALTYPES.AUTH,
-      payload: res.data.msg,
-      // payload: {
-      //   // token: res.data.access_token,
-      //   user: res.data.msg,
-      // },
+      payload: {
+        token: res.data.access_token,
+      },
     });
 
     localStorage.setItem('firstLogin', true);
@@ -188,20 +184,17 @@ export const responseGoogle = (response) => async (dispatch) => {
         success: res.data.msg,
       },
     });
+
     setTimeout(() => {
-      dispatch({
-        type: GLOBALTYPES.ALERT,
-        payload: {},
-      });
-    }, 6000);
+      window.location.href = '/';
+    }, 3000);
   } catch (err) {
-    console.log(err);
-    // dispatch({
-    //   type: GLOBALTYPES.ALERT,
-    //   payload: {
-    //     error: err.response.data.msg,
-    //   },
-    // });
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.msg,
+      },
+    });
 
     setTimeout(() => {
       dispatch({

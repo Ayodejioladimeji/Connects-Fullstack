@@ -18,11 +18,13 @@ import Loading from '../components/alert/Loading';
 // Bringing register from redux actions
 import { register, responseGoogle } from '../redux/actions/authAction';
 
+// VALIDATION REGEX
 const passwordUpper = /(?=.*[A-Z])/;
 const passwordSpecial = /(?=.*[!@#$%^&*])/;
 const passwordLower = /(?=.*[a-z])/;
 const passwordRegex = /(?=.*[0-9])/;
 
+// REGISTER COMPONENT
 const Register = () => {
   const { alert, auth } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -32,6 +34,12 @@ const Register = () => {
   useEffect(() => {
     if (auth.token) history.push('/');
   }, [auth.token, history]);
+
+  // Google login function
+  const onSuccess = (response) => {
+    const tokenId = response.tokenId;
+    dispatch(responseGoogle(tokenId));
+  };
 
   return (
     <Formik
@@ -112,7 +120,7 @@ const Register = () => {
                         clientId='676440649536-83g9poh72p3a3n7oj0inb3bg1450d2id.apps.googleusercontent.com'
                         buttonText='Google Signup'
                         className={styles.social_one}
-                        onSuccess={() => dispatch(responseGoogle())}
+                        onSuccess={onSuccess}
                         cookiePolicy={'single_host_origin'}
                       />
                     </div>
