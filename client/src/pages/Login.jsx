@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // COMPONENTS
-import styles from './Register.module.css';
+import styles from './Login.module.css';
 import logo from '../images/logo.png';
 import left from '../images/lefti.png';
 import Loading from '../components/alert/Loading';
@@ -90,9 +90,9 @@ const Register = () => {
         } = props;
 
         return (
-          <div className={styles.register}>
-            <div className={styles.register_center}>
-              <div className={styles.register_left}>
+          <div className={styles.login}>
+            <div className={styles.login_center}>
+              <div className={styles.login_left}>
                 <img src={left} alt='left_image' />
                 <p>
                   Reach out to your loved ones
@@ -100,15 +100,15 @@ const Register = () => {
                 </p>
               </div>
 
-              <div className={styles.register_right}>
-                <div className={styles.register_right_div}>
-                  <div className={styles.register_right_top}>
+              <div className={styles.login_right}>
+                <div className={styles.login_right_div}>
+                  <div className={styles.login_right_top}>
                     <img src={logo} alt='logo' />
                     <h3>Welcome Back!</h3>
                     <p>Sign in to continue</p>
                   </div>
 
-                  <div className={styles.register_right_bottom}>
+                  <div className={styles.login_right_bottom}>
                     <div className={styles.social_box}>
                       <GoogleLogin
                         clientId='676440649536-83g9poh72p3a3n7oj0inb3bg1450d2id.apps.googleusercontent.com'
