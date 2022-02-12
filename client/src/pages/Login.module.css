@@ -41,7 +41,6 @@
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-  padding-top: 30px;
 }
 
 .login_right::-webkit-scrollbar {
@@ -190,6 +189,7 @@
 
   .login_right {
     width: 65%;
+    padding-top: 30px;
   }
 
   .login_right_div {
