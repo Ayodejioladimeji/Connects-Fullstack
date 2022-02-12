@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 
-import styles from './Register.module.css';
+import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 import left from '../images/lefti.png';
@@ -58,9 +58,9 @@ const Reset = () => {
         } = props;
 
         return (
-          <div className={styles.register}>
-            <div className={styles.register_center}>
-              <div className={styles.register_left}>
+          <div className={styles.Login}>
+            <div className={styles.Login_center}>
+              <div className={styles.Login_left}>
                 <img src={left} alt='left_image' />
                 <p>
                   Reach out to your loved ones
@@ -68,15 +68,15 @@ const Reset = () => {
                 </p>
               </div>
 
-              <div className={styles.register_right}>
-                <div className={styles.register_right_div}>
-                  <div className={styles.register_right_top}>
+              <div className={styles.Login_right}>
+                <div className={styles.Login_right_div}>
+                  <div className={styles.Login_right_top}>
                     <img src={logo} alt='logo' />
                     <h3>We got your back</h3>
                     <p>Change your password</p>
                   </div>
 
-                  <div className={styles.register_right_bottom}>
+                  <div className={styles.Login_right_bottom}>
                     <form onSubmit={handleSubmit}>
                       <div className={styles.form_group}>
                         <label htmlFor='password'>Password</label>
@@ -193,7 +193,7 @@ const Reset = () => {
 
                     <div className={styles.reg}>
                       <small>
-                        Not a member? <Link to='/register'>Register</Link>
+                        Not a member? <Link to='/Login'>Login</Link>
                       </small>
                     </div>
                   </div>

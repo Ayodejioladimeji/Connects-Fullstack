@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as EmailValidator from 'email-validator';
 
-import styles from './Register.module.css';
+import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 import left from '../images/lefti.png';
@@ -43,9 +43,9 @@ const Forgot = () => {
         } = props;
 
         return (
-          <div className={styles.register}>
-            <div className={styles.register_center}>
-              <div className={styles.register_left}>
+          <div className={styles.login}>
+            <div className={styles.login_center}>
+              <div className={styles.login_left}>
                 <img src={left} alt='left_image' />
                 <p>
                   Reach out to your loved ones
@@ -53,15 +53,15 @@ const Forgot = () => {
                 </p>
               </div>
 
-              <div className={styles.register_right}>
-                <div className={styles.register_right_div}>
-                  <div className={styles.register_right_top}>
+              <div className={styles.login_right}>
+                <div className={styles.login_right_div}>
+                  <div className={styles.login_right_top}>
                     <img src={logo} alt='logo' />
                     <h3>Forgot your Password?</h3>
                     <p>Confirm your email to continue</p>
                   </div>
 
-                  <div className={styles.register_right_bottom}>
+                  <div className={styles.login_right_bottom}>
                     <form onSubmit={handleSubmit}>
                       <div className={styles.form_group}>
                         <label htmlFor='email'>Email Address</label>
