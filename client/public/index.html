@@ -2,14 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="favicon.png" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Connect is a social messenger connecting people together without stress"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
@@ -18,5 +19,17 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!-- Registering service worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./serviceworker.js')
+            .then((reg) => console.log('success', reg.scope))
+            .catch((err) => console.log('Failure', err));
+        });
+      }
+    </script>
   </body>
 </html>

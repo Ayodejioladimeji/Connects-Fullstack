@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import DataProvider from './redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,3 +16,5 @@ ReactDOM.render(
 );
 
 reportWebVitals();
+
+serviceWorkerRegistration.register();
