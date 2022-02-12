@@ -111,19 +111,20 @@
   cursor: pointer;
 }
 
-.bell span {
+.bell small {
   display: flex;
   align-items: center;
   justify-content: center;
   background: red;
   color: var(--white);
-  font-size: 10px;
+  font-size: 9px;
   border-radius: 50%;
   height: 15px;
   width: 15px;
   position: absolute;
   top: -1px;
   left: 3px;
+  padding: 7px;
 }
 
 /* THE SECTION OF THE MEDIA QUERY */

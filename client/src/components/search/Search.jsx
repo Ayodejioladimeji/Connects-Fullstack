@@ -70,7 +70,7 @@ const Search = () => {
               onClick={() => dispatch(notifyModal())}
             >
               <FiBell className={styles.search_icon} />
-              <span>{notify.data.length}</span>
+              <small>{notify.data.length}</small>
             </div>
           )}
 

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GLOBALTYPES } from './redux/actions/globalTypes';
 import { MESS_TYPES } from './redux/actions/messageAction';
 
-import audiobell from './audio/got-it-done-613.mp3';
+import audiobell from './audio/message.mp3';
 import { NOTIFY_TYPES } from './redux/actions/notifyAction';
 
 const spawnNotification = (body, icon, url, title) => {

@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 9999999990;
+  z-index: 999990;
   text-align: center;
   padding: 0 10px;
   height: 100vh;
@@ -82,8 +82,9 @@
 
 .edit_profile button {
   color: var(--white);
-  background: var(--transparent);
+  background: transparent;
   margin-top: 15px;
+  border: 1px solid var(--white);
 }
 
 .edit_profile button:hover {

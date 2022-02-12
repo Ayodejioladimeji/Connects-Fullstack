@@ -4,7 +4,7 @@
   bottom: 5%;
   left: 5%;
   min-width: 200px;
-  z-index: 99900;
+  z-index: 9999990;
   cursor: pointer;
   box-shadow: var(--shadoos);
   border: 1px solid var(--primary);
@@ -38,7 +38,7 @@
   bottom: 5%;
   left: 5%;
   min-width: 200px;
-  z-index: 500;
+  z-index: 9999990;
   cursor: pointer;
   box-shadow: var(--shadoos);
   border: 1px solid var(--primary);
