@@ -58,7 +58,7 @@ export const addMessage =
       // Notify
       const msgs = {
         id: auth.user._id,
-        text: 'Sends you a message.',
+        text: msg.call ? 'called you' : 'Sends you a message',
         recipients: [msg.recipient],
         url: `/message/${_id}`,
         content: msg.text,

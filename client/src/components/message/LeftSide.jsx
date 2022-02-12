@@ -75,7 +75,9 @@ const LeftSide = () => {
                     <div>
                       <small>{item.user.username}</small>
                       <small className={styles.ring_content}>
-                        {item.content.slice(0, 20)}
+                        {item.content === ''
+                          ? 'called you'
+                          : item.content.slice(0, 20)}
                       </small>
                       <small className={styles.ring_contents}>
                         {moment(item.createdAt).fromNow()}
