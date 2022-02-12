@@ -79,7 +79,7 @@ const CallModal = () => {
         socket.emit('endCall', { ...call, times: 0 });
         addCallMessage(call, 0);
         dispatch({ type: GLOBALTYPES.CALL, payload: null });
-      }, 15000);
+      }, 25000);
 
       return () => clearTimeout(timer);
     }
@@ -124,6 +124,7 @@ const CallModal = () => {
     });
   };
 
+  // Make call
   useEffect(() => {
     peer.on('call', (newCall) => {
       openStream(call.video).then((stream) => {
@@ -219,16 +220,6 @@ const CallModal = () => {
             </div>
           )}
         </div>
-
-        {!answer && (
-          <div className={styles.timer}>
-            <small>{mins.toString().length < 2 ? '0' + mins : mins}</small>
-            <small>:</small>
-            <small>
-              {second.toString().length < 2 ? '0' + second : second}
-            </small>
-          </div>
-        )}
 
         <div className={styles.call_menu}>
           <MdCallEnd className={styles.ending_call} onClick={handleEndCall} />
