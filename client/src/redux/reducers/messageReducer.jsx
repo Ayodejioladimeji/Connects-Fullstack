@@ -99,11 +99,11 @@ const messageReducer = (state = initialState, action) => {
     case MESS_TYPES.CHECK_ONLINE_OFFLINE:
       return {
         ...state,
-        users: state.users.map((user) => {
-          return action.payload.includes(user._id)
+        users: state.users.map((user) =>
+          action.payload.includes(user._id)
             ? { ...user, online: true }
-            : { ...user, online: false };
-        }),
+            : { ...user, online: false }
+        ),
       };
 
     default:

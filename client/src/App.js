@@ -18,7 +18,7 @@ import CallModal from './components/message/CallModal';
 import { getNotifies } from './redux/actions/notifyAction';
 
 function App() {
-  const { auth, call } = useSelector((state) => state);
+  const { auth, call, online } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function App() {
       dispatch(getSuggestions(auth.token));
       dispatch(getNotifies(auth.token));
     }
-  }, [dispatch, auth.token]);
+  }, [dispatch, auth.token, online]);
 
   useEffect(() => {
     if (!('Notification' in window)) {

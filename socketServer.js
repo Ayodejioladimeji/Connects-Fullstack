@@ -10,7 +10,6 @@ const EditData = (data, id, call) => {
 const SocketServer = (socket) => {
   // Connect - Disconnect
   socket.on('joinUser', (user) => {
-    if (user === null) return;
     users.push({
       id: user._id,
       socketId: socket.id,
@@ -55,6 +54,7 @@ const SocketServer = (socket) => {
     const following = users.filter((user) => {
       return user.id;
     });
+
     socket.emit('checkUserOnlineToMe', following);
 
     const clients = users.filter((user) => user.id);

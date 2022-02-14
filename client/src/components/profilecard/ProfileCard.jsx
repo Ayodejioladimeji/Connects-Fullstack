@@ -16,7 +16,6 @@ const ProfileCard = ({ children, user }) => {
   return (
     <div className={styles.profile_card}>
       <div className='d-flex align-items-center'>
-        {' '}
         <FaArrowLeft
           className={styles.profile_arrow}
           onClick={() => history.push('/')}

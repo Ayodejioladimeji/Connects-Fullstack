@@ -93,6 +93,7 @@ const SocketClient = () => {
   // Checck User Online To client
   useEffect(() => {
     socket.on('checkUserOnlineToClient', (id) => {
+      console.log(id);
       if (!online.includes(id)) {
         dispatch({ type: GLOBALTYPES.ONLINE, payload: id });
       }

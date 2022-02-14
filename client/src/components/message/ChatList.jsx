@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 // COMPONENTS
 import {
@@ -16,6 +16,7 @@ const ChatList = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+  const { id } = useParams();
 
   useEffect(() => {
     if (message.firstLoad) return;
@@ -25,14 +26,6 @@ const ChatList = () => {
   useEffect(() => {
     dispatch(getConversations({ auth }));
   }, [message.resultUsers, auth, dispatch]);
-
-  // Check User Online - Offline
-  useEffect(() => {
-    if (message.firstLoad) {
-      if (online.length === 0) return null;
-      dispatch({ type: MESS_TYPES.CHECK_ONLINE_OFFLINE, payload: online });
-    }
-  }, [online, message.firstLoad, dispatch]);
 
   // Add user
   const handleAddUser = (user) => {
@@ -46,8 +39,16 @@ const ChatList = () => {
       payload: { ...user, text: '', media: [] },
     });
     dispatch({ type: MESS_TYPES.CHECK_ONLINE_OFFLINE, payload: online });
+
     return history.push(`/message/${user._id}`);
   };
+
+  // Check User Online - Offline
+  useEffect(() => {
+    if (message.firstLoad) {
+      dispatch({ type: MESS_TYPES.CHECK_ONLINE_OFFLINE, payload: online });
+    }
+  }, [online, message.firstLoad, dispatch]);
 
   return (
     <div className={styles.chat_list}>
@@ -60,9 +61,7 @@ const ChatList = () => {
                 className={`${styles.message_user}`}
                 onClick={() => handleAddUser(user)}
               >
-                <UserCard user={user}>
-                  {user.online && <FaCircle className={styles.fa_circle} />}
-                </UserCard>
+                <UserCard user={user} />
               </div>
             );
           })}
@@ -70,6 +69,7 @@ const ChatList = () => {
       ) : (
         <>
           {message.users.map((user) => {
+            console.log(user.online);
             return (
               <div
                 key={user._id}
