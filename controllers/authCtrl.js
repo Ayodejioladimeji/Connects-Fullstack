@@ -24,6 +24,12 @@ const authCtrl = {
           .status(400)
           .json({ msg: 'User already exists with that email' });
 
+      const user_name = await Users.findOne({ username });
+      if (user_name)
+        return res
+          .status(400)
+          .json({ msg: 'Username taken, choose another one' });
+
       // PASSWORD ENCRYPTION
       const passwordHash = await bcrypt.hash(password, 12);
 
@@ -71,7 +77,7 @@ const authCtrl = {
 
       // Creating the new user object
       const newUser = new Users({
-        username,
+        username: username.trim().toLowerCase(),
         email,
         password,
       });

@@ -25,7 +25,7 @@ export const register = (data) => async (dispatch) => {
 
     setTimeout(() => {
       dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
-      window.location.href = '/verification';
+      window.location.href = '/login';
     }, 6000);
   } catch (err) {
     dispatch({
@@ -58,7 +58,6 @@ export const activation = (data) => async (dispatch) => {
       },
     });
 
-    localStorage.setItem('firstLogin', true);
     dispatch({
       type: GLOBALTYPES.ALERT,
       payload: {

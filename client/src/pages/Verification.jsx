@@ -35,7 +35,7 @@ const Verification = () => {
                   Activate your Account
                 </p>
                 <div className={styles.open}>
-                  <Link to='/'>Go home</Link>
+                  <Link to='/login'>Login</Link>
                 </div>
               </div>
             </div>

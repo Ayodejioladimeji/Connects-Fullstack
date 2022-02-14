@@ -16,9 +16,7 @@ const userCtrl = {
     try {
       const users = await Users.find({
         username: { $regex: req.query.username },
-      })
-        .limit(10)
-        .select('email username website mobile avatar');
+      }).select('email username website mobile avatar');
 
       res.json({ users });
     } catch (err) {
@@ -209,7 +207,7 @@ const userCtrl = {
         res.json({ msg: 'Login success!' });
       } else {
         const newUser = new Users({
-          username: name,
+          username: name.trim().toLowerCase(),
           email,
           password: passwordHash,
           avatar: picture,

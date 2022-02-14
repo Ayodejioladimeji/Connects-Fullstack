@@ -34,6 +34,7 @@ const Search = () => {
 
     try {
       const res = await getDataAPI(`search?username=${search}`, auth.token);
+      console.log(res.data.users);
       dispatch({
         type: MESS_TYPES.SEARCH_USER,
         payload: res.data.users,
@@ -115,7 +116,7 @@ const Search = () => {
                 type='text'
                 value={search}
                 placeholder='Search for friends'
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value.toLowerCase())}
               />
             </form>
           </div>

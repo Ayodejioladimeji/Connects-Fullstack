@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // COMPONENTS
 import {
@@ -16,7 +16,6 @@ const ChatList = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
-  const { id } = useParams();
 
   useEffect(() => {
     if (message.firstLoad) return;
@@ -46,7 +45,9 @@ const ChatList = () => {
   // Check User Online - Offline
   useEffect(() => {
     if (message.firstLoad) {
-      dispatch({ type: MESS_TYPES.CHECK_ONLINE_OFFLINE, payload: online });
+      setTimeout(() => {
+        dispatch({ type: MESS_TYPES.CHECK_ONLINE_OFFLINE, payload: online });
+      }, 2000);
     }
   }, [online, message.firstLoad, dispatch]);
 
@@ -61,7 +62,9 @@ const ChatList = () => {
                 className={`${styles.message_user}`}
                 onClick={() => handleAddUser(user)}
               >
-                <UserCard user={user} />
+                <UserCard user={user}>
+                  {user.online && <FaCircle className={styles.fa_circle} />}
+                </UserCard>
               </div>
             );
           })}
