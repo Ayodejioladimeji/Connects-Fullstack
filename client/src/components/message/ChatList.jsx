@@ -72,7 +72,6 @@ const ChatList = () => {
       ) : (
         <>
           {message.users.map((user) => {
-            console.log(user.online);
             return (
               <div
                 key={user._id}

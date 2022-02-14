@@ -77,6 +77,7 @@ const messageCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   getMessages: async (req, res) => {
     try {
       const features = new APIfeatures(
@@ -99,18 +100,24 @@ const messageCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   deleteMessages: async (req, res) => {
     try {
-      await Messages.findOneAndRemove({
-        _id: req.params.id,
-        sender: req.user._id,
-      });
+      if (req.params.id === 'undefined') {
+        return;
+      } else {
+        await Messages.findOneAndRemove({
+          _id: req.params.id,
+          sender: req.user._id,
+        });
+      }
 
       res.json({ msg: 'Delete Success!' });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   deleteConversation: async (req, res) => {
     try {
       const newConver = await Conversations.findOneAndDelete({
@@ -119,6 +126,8 @@ const messageCtrl = {
           { recipients: [req.params.id, req.user._id] },
         ],
       });
+
+      if (newConver === null) return;
       await Messages.deleteMany({ conversation: newConver._id });
 
       res.json({ msg: 'Delete Success!' });
