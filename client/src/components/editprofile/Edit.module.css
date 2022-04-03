@@ -1,0 +1,116 @@
+.edit_profile {
+  background: var(--primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999990;
+  text-align: center;
+  padding: 0 10px;
+  height: 100vh;
+}
+
+.info_avatar {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+  margin: 15px auto;
+  cursor: pointer;
+  border: 3px solid var(--white);
+}
+
+.info_avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.info_avatar span {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  text-align: center;
+  color: var(--white);
+  transition: 0.3s ease-in-out;
+  background: var(--secondary);
+}
+.info_avatar:hover span {
+  bottom: -15%;
+}
+.info_avatar .file_up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.form_group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.edit_icons {
+  color: var(--white);
+  margin-right: 10px;
+  margin-top: -9px;
+}
+
+.form_group input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--deep);
+  outline: none;
+  color: var(--white);
+}
+
+.form_group input::-webkit-input-placeholder {
+  color: var(--white);
+  opacity: 0.4;
+}
+
+.edit_profile button {
+  color: var(--white);
+  background: transparent;
+  margin-top: 15px;
+  border: 1px solid var(--white);
+}
+
+.edit_profile button:hover {
+  background: transparent;
+  color: var(--white);
+}
+
+.arrow {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.edit_profile h3 {
+  font-family: 'Gorditas', cursive;
+  font-size: var(--small);
+  color: var(--white);
+  font-weight: bold;
+  margin-top: 150px;
+}
+
+/* THE SECTION OF THE MEDIA QUERY */
+@media screen and (min-width: 767px) {
+  .edit_profile {
+    max-width: 300px;
+  }
+}

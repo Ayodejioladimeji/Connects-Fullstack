@@ -1,0 +1,47 @@
+.errMsg {
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  min-width: 200px;
+  z-index: 9999990;
+  cursor: pointer;
+  box-shadow: var(--shadoos);
+  border: 1px solid var(--primary);
+  background: var(--white);
+  color: red;
+}
+
+.msg_header {
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  font-weight: 600;
+}
+
+.times {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+}
+
+.body {
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+.successMsg {
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  min-width: 200px;
+  z-index: 9999990;
+  cursor: pointer;
+  box-shadow: var(--shadoos);
+  border: 1px solid var(--primary);
+  background: var(--white);
+  color: rgb(9, 158, 54);
+}

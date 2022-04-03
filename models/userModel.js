@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       maxlength: 25,
-      unique: true,
+      required: true,
     },
     password: {
       type: String,
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: Number,
-      default: 0, // 0 = user, 1 = admin
+      default: 0,
     },
     mobile: {
       type: String,

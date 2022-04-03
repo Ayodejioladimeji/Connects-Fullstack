@@ -1,0 +1,16 @@
+.reactions {
+  display: grid;
+  grid-template-columns: repeat(6, 50px);
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  background: var(--white);
+  box-shadow: var(--shadoos);
+  top: 0;
+  right: 0;
+  transform: translateY(-110%);
+  padding: 10px;
+}
+.reactions span {
+  margin: 3px 0;
+}
