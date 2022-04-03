@@ -31,9 +31,6 @@ const Routes = () => {
         <Route path='/reset_password' exact component={Reset} />
 
         <Route exact component={NotFound} />
-
-        {/* <PrivateRouter exact path='/:page' component={PageRender} />
-        <PrivateRouter exact path='/:page/:id' component={PageRender} /> */}
       </Switch>
     </div>
   );
