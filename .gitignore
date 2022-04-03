@@ -3,7 +3,7 @@ node_modules/
 .env
 
 # The client side
-Socketclient.js
+SocketClient.js
 
 utils/
 
